@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cameraLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".CameraFragment">
+
+    <!-- Show captured image -->
+    <ImageView
+        android:id="@+id/imageViewPreview"
+        android:layout_width="362dp"
+        android:layout_height="338dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/darker_gray"
+        android:contentDescription="Image Preview"
+        android:scaleType="centerCrop" />
+
+    <!-- Take Picture Button -->
+    <Button
+        android:id="@+id/btnTakePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take Picture"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:padding="12dp" />
+
+</LinearLayout>
