@@ -1,11 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:title="back" />
+        android:title="back"
+        android:icon="@drawable/back"/>
     <item
         android:id="@+id/nav_search"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/form"
+        />
     <item
         android:id="@+id/nav_profile"
-        android:title="next" />
+        android:title="next"
+        android:icon="@drawable/next"/>
 </menu>

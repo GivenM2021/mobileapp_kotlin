@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/id_number"
+                android:layout_marginTop="50sp"
                 android:inputType="number" />
 
             <!-- Name -->
@@ -32,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
+                android:layout_marginTop="10sp"
                 android:inputType="textPersonName" />
 
             <!-- Surname -->
@@ -40,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/surname"
+                android:layout_marginTop="10sp"
                 android:inputType="textPersonName" />
 
             <!-- Occupancy -->
@@ -48,11 +51,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/occupancy"
+                android:layout_marginTop="10sp"
                 android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:text="Submit"/>
+
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation -->
+<!--     Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

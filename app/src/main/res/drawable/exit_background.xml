@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color of the button -->
+    <item android:drawable="@color/white" />
+
+    <!-- Image at the bottom -->
+    <item
+        android:drawable="@drawable/exiting"
+        android:width="140dp"
+        android:height="140dp"
+    />
+</layer-list>

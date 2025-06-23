@@ -1,0 +1,75 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Top full-width Profile button -->
+    <Button
+        android:id="@+id/profileInfo"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:textSize="20sp"
+        android:text="Profile"
+        android:drawableLeft="@drawable/user_account_square"
+        android:textColor="@color/white"
+        android:backgroundTint="#D0D0D0"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Grid of 2 columns below -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:useDefaultMargins="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/issueAsset"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:text="Issue"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#2f9400" />
+
+        <Button
+            android:id="@+id/monitorAsset"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:text="Monitor"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#268dbd" />
+
+        <Button
+            android:id="@+id/returnAsset"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:text="Return"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#f30000" />
+        <Button
+            android:id="@+id/myAsset"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:text="My Assets"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#985ba3" />
+
+    </GridLayout>
+</LinearLayout>

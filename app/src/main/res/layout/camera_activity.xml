@@ -5,28 +5,24 @@
     android:id="@+id/cameraLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".CameraFragment">
+    tools:context=".main.CameraFragment">
 
-    <!-- Show captured image -->
-    <ImageView
+    <androidx.camera.view.PreviewView
         android:id="@+id/imageViewPreview"
         android:layout_width="362dp"
         android:layout_height="338dp"
         android:layout_marginBottom="24dp"
-        android:background="@android:color/darker_gray"
-        android:contentDescription="Image Preview"
-        android:scaleType="centerCrop" />
+        android:background="@drawable/qr_code_bg" />
 
-    <!-- Take Picture Button -->
+    <!-- Optional: Button to take picture -->
     <Button
         android:id="@+id/btnTakePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take Picture"
+        android:text="Capture"
         android:drawableLeft="@android:drawable/ic_menu_camera"
         android:padding="12dp" />
-
 </LinearLayout>

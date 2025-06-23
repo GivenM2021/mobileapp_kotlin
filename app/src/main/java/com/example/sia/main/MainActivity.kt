@@ -1,12 +1,12 @@
-package com.example.sia
+package com.example.sia.main
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.sia.R
+import com.example.sia.utils.ApiService
 
 class MainActivity : AppCompatActivity() {
     private lateinit var id: EditText
@@ -18,22 +18,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
-        val fragments = listOf(FirstFragment(), SecondFragment(), CameraFragment())
+        val fragments = listOf(AssetCollector(), AssetActivity(), CameraFragment())
 
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount() = fragments.size
             override fun createFragment(position: Int) = fragments[position]
-
-//        setContentView(R.layout.custodian_form) // Links this activity to activity_main.xml
-//        id = findViewById(R.id.editTextID)
-//        firstName = findViewById(R.id.editTextName)
-//        firstSurname = findViewById(R.id.editTextSurname)
-//
-//        Log.d(id.toString(), "onCreate: ID is ")
-//        Log.d(firstName.toString() , "onCreate: first name is ")
-
-
 
         }
     }
