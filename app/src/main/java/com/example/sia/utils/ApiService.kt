@@ -26,13 +26,11 @@ class ApiService {
 
         val client = getUnsafeOkHttpClient()
 
-        fun systemLogin(context: Context) {
+        fun systemLogin(context: Context, onResult: (code: Int, body: String?, token: String?) -> Unit) {
             val targetUrl = "https://${SharedPrefs.ACCESS_CONTROL_IP_ADDRESS}/user_management/system_login"
-            println("IP address $targetUrl")
-
             val jsonObject = JSONObject().apply {
-                put("username_arg", "a")
-                put("infihlo_arg", "a")
+                put("username_arg", SharedPrefs.getUsername(context))
+                put("infihlo_arg", SharedPrefs.getPassword(context))
             }
 
             val requestBody = jsonObject.toString().toRequestBody("application/json".toMediaType())
@@ -50,37 +48,36 @@ class ApiService {
                     val code = response.code
 
                     launch(Dispatchers.Main) {
+                        var token: String? = null
+
                         if (response.isSuccessful && body != null) {
                             try {
                                 val json = JSONObject(body)
-                                val token = json.getString("token")
-
-                                SharedPrefs.setToken(context, token)  // ✅ Proper usage
-                                val tokenValue = SharedPrefs.getToken(context)
-                                Log.d("Token", "Token value: ${tokenValue}")
-
+                                token = json.getString("token")
+                                SharedPrefs.setToken(context, token)
+                                Log.d("Token", "Token value: ${SharedPrefs.getToken(context)}")
                                 Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
                             } catch (e: Exception) {
                                 Toast.makeText(context, "Token parsing error", Toast.LENGTH_LONG).show()
-                                Log.e("Token", "Error parsing token from response", e)
+                                Log.e("Token", "Error parsing token", e)
                             }
-
-                        } else {
-                            when (code) {
-                                201 -> Toast.makeText(context, "Record created", Toast.LENGTH_LONG).show()
-                                409 -> Toast.makeText(context, "Person exists", Toast.LENGTH_LONG).show()
-                                else -> Toast.makeText(context, "Error $code: $body", Toast.LENGTH_LONG).show()
-                            }
+//                        } else {
+//                            when (code) {
+//                                201 -> Toast.makeText(context, "Record created", Toast.LENGTH_LONG).show()
+//                                409 -> Toast.makeText(context, "Person exists", Toast.LENGTH_LONG).show()
+//                                else -> Toast.makeText(context, "Error $code: $body", Toast.LENGTH_LONG).show()
+//                            }
                         }
 
-                        Log.d("sendDataToServer", "Response code: $code")
-                        Log.d("sendDataToServer", "Response body: $body")
+                        Log.d("systemLogin", "Code: $code, Body: $body")
+                        onResult(code, body, token)
                     }
 
                 } catch (e: Exception) {
                     launch(Dispatchers.Main) {
                         Toast.makeText(context, "Exception: ${e.message}", Toast.LENGTH_LONG).show()
-                        Log.e("sendDataToServer", "Exception occurred", e)
+                        Log.e("systemLogin", "Exception", e)
+                        onResult(-1, e.message, null)
                     }
                 }
             }

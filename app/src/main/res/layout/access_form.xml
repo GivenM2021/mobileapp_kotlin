@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/profileInfo"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Profile"
         android:drawableLeft="@drawable/user_account_square"
@@ -19,13 +19,15 @@
         android:backgroundTint="#D0D0D0"
         android:layout_marginBottom="16dp" />
 
-    <!-- Grid of 2 columns below -->
+    <!-- Grid with no spacing -->
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
+        android:alignmentMode="alignBounds"
         android:columnCount="2"
-        android:useDefaultMargins="true"
+        android:useDefaultMargins="false"
+        android:padding="0dp"
+        android:rowCount="2"
         android:orientation="horizontal">
 
         <Button
@@ -34,6 +36,7 @@
             android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_margin="0dp"
             android:text="Issue"
             android:textSize="20sp"
             android:textColor="@color/white"
@@ -45,6 +48,7 @@
             android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_margin="0dp"
             android:text="Monitor"
             android:textSize="20sp"
             android:textColor="@color/white"
@@ -56,20 +60,22 @@
             android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_margin="0dp"
             android:text="Return"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:backgroundTint="#f30000" />
+
         <Button
             android:id="@+id/myAsset"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_margin="0dp"
             android:text="My Assets"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:backgroundTint="#985ba3" />
-
     </GridLayout>
 </LinearLayout>

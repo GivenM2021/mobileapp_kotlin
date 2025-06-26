@@ -1,42 +1,59 @@
 package com.example.sia.main
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.sia.R
-import com.example.sia.databinding.ActivityMain2Binding
+import com.example.sia.utils.ApiService
+import com.example.sia.utils.SharedPrefs
 
 class MainActivity2 : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMain2Binding
+    private lateinit var usernameEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var submitButton: Button
+    private lateinit var loadingProgressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.content_login)
 
-        binding = ActivityMain2Binding.inflate(layoutInflater)
-        setContentView(binding.root)
+        usernameEditText = findViewById(R.id.usernameEditText)
+        passwordEditText = findViewById(R.id.passwordEditText)
+        submitButton = findViewById(R.id.loginButton)
+        loadingProgressBar = findViewById(R.id.loadingProgressBar)
 
-        setSupportActionBar(binding.toolbar)
+        submitButton.setOnClickListener {
+            val username = usernameEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+            SharedPrefs.setUsername(this, username)
+            SharedPrefs.setPassword(this, password)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter username and password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Show loading
+            loadingProgressBar.visibility = View.VISIBLE
+            submitButton.isEnabled = false
+
+            ApiService.systemLogin(this) { code, body, token ->
+                loadingProgressBar.visibility = View.GONE
+                submitButton.isEnabled = true
+
+                if (code == 200 && token != null) {
+                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, AccessForm::class.java)
+                    startActivity(intent)
+                } else if (code == -1) {
+                    Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Login failed: code $code", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
     }
 }

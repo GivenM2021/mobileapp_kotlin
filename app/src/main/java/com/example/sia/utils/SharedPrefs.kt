@@ -15,6 +15,8 @@ class SharedPrefs {
         const val ACCESS_CONTROL_IP_ADDRESS = "146.64.207.201"
 
         // 👇 Add keys for user data
+        private const val USERNAME = "username"
+        private const val PASSWORD = "password"
         private const val KEY_NATIONAL_ID = "national_id"
         private const val KEY_FIRST_NAME = "first_name"
         private const val KEY_SURNAME = "surname"
@@ -24,6 +26,18 @@ class SharedPrefs {
 
 
         // ✅ Save individual values
+        fun setUsername(context: Context, value: String) {
+            context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)
+                .edit().putString(USERNAME, value).apply()
+
+        }
+
+        fun setPassword(context: Context, value: String) {
+            context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)
+                .edit().putString(PASSWORD, value).apply()
+
+        }
+
         fun setNationalId(context: Context, value: String) {
             context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)
                 .edit().putString(KEY_NATIONAL_ID, value).apply()
@@ -49,6 +63,16 @@ class SharedPrefs {
         }
 
         // ✅ Retrieve individual values
+        fun getUsername(context: Context): String? {
+            return context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)
+                .getString(USERNAME, "")
+        }
+
+        fun getPassword(context: Context): String? {
+            return context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)
+                .getString(PASSWORD, "")
+        }
+
         fun getNationalId(context: Context): String? {
             return context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)
                 .getString(KEY_NATIONAL_ID, "")

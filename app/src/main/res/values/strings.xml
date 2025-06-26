@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SIA</string>
+    <string name="app_name">Security Analytics</string>
     <string name="id_number">Id number</string>
     <string name="occupancy">Occupancy</string>
     <string name="full_name">full name</string>

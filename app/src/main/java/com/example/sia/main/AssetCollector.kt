@@ -24,7 +24,7 @@ class AssetCollector : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.collector_activity, container, false)
 
-        ApiService.systemLogin(requireContext())
+//        ApiService.systemLogin(requireContext())
 
         id = view.findViewById(R.id.editTextID)
         firstName = view.findViewById(R.id.editTextName)
