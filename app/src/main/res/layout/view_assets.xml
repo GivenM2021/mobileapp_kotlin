@@ -1,9 +1,19 @@
-<!-- res/layout/view_assets.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp">
+    >
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/topTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/white"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@android:color/darker_gray"
+        android:background="#212f3c" />
 
     <!-- Search bar -->
     <androidx.appcompat.widget.SearchView
@@ -11,13 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search assets..."
-        android:iconifiedByDefault="true" />
+        android:iconifiedByDefault="true"
+        android:background="#212f3c"/>
 
     <!-- Asset list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/assetRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp" />
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:padding="8dp"/>
 
 </LinearLayout>

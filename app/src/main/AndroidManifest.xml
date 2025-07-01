@@ -35,7 +35,7 @@
         <activity
             android:name=".main.AccessForm"
             android:exported="false"
-            android:theme="@style/Theme.SIA" />
+            android:theme="@style/Theme.AppCompat.Light"  />
         <activity
             android:name=".main.MainActivity2"
             android:exported="true"

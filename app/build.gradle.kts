@@ -9,7 +9,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.sia"
+        applicationId = "com.example.sia_test"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
